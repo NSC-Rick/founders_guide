@@ -452,6 +452,97 @@ div.stButton > button:hover {
   display: none;
 }
 
+/* ── Conversation page divider ───────────────────────────── */
+.fg-convo-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+  margin: 0 auto 0;
+}
+
+/* ── ElevenLabs Agent Shell ──────────────────────────────── */
+.fg-agent-shell {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0 1rem;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Opening prompt above the widget */
+.fg-agent-prompt {
+  text-align: center;
+  padding: 1rem 0 0;
+}
+
+.fg-agent-question {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 3vw, 1.65rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+.fg-agent-question-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Stage that holds the ElevenLabs widget */
+.fg-agent-stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 1rem;
+}
+
+/* ── ElevenLabs Widget — visual integration ──────────────── */
+
+/*
+  The <elevenlabs-convai> custom element renders a shadow DOM.
+  These rules style the host element itself (the outer shell)
+  to blend with our design. Where shadow-DOM internals are
+  inaccessible, the host-level overrides neutralise the default
+  widget chrome so it feels native.
+*/
+elevenlabs-convai {
+  --el-brand:          #5C6B4A;     /* match --accent */
+  --el-brand-hover:    #4A5639;
+  --el-background:     #FFFFFF;
+  --el-border-radius:  9999px;      /* pill buttons */
+  --el-font-family:    'Inter', -apple-system, sans-serif;
+  --el-text-primary:   #1A1916;
+  --el-text-secondary: #7A746A;
+  --el-border-color:   #E8E4DC;
+
+  display: block;
+
+  /* Remove any default box-shadow or border the widget adds */
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+
+  /* Widen to feel spacious at center */
+  min-width: 280px;
+}
+
+/* Give the widget a generous breathing zone */
+.fg-agent-stage elevenlabs-convai {
+  filter: drop-shadow(0 4px 24px rgba(92, 107, 74, 0.10));
+  transition: filter 0.3s ease;
+}
+
+.fg-agent-stage elevenlabs-convai:hover {
+  filter: drop-shadow(0 6px 32px rgba(92, 107, 74, 0.18));
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 640px) {
   .fg-card-row {
@@ -462,5 +553,12 @@ div.stButton > button:hover {
   }
   .fg-display {
     font-size: 2.2rem;
+  }
+  .fg-agent-shell {
+    gap: 2rem;
+    padding: 0 0.5rem;
+  }
+  .fg-agent-question {
+    font-size: 1.2rem;
   }
 }
