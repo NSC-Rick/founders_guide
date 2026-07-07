@@ -136,16 +136,38 @@ div.stButton > button {
   font-size: 1rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.01em !important;
+  white-space: nowrap !important;
   cursor: pointer !important;
   transition: var(--transition) !important;
   box-shadow: 0 2px 12px rgba(92, 107, 74, 0.25) !important;
   width: auto !important;
+  min-width: 130px !important;
 }
 
 div.stButton > button:hover {
   background-color: var(--accent-hover) !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 6px 20px rgba(92, 107, 74, 0.35) !important;
+}
+
+/* Back button — muted ghost style, distinct from CTA */
+.fg-back-btn div.stButton > button {
+  background-color: transparent !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+  padding: 0.45rem 1.25rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  min-width: 130px !important;
+}
+
+.fg-back-btn div.stButton > button:hover {
+  background-color: var(--surface) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 /* ── Feature cards ───────────────────────────────────────── */
